@@ -16,7 +16,7 @@ object ImageUtils {
     fun clearCache(context: Context) {
         Thread { Glide.get(context).clearDiskCache() }.start()
     }
-
+//Glide to load url
     fun loadImage(imagePath: String, imageView: ImageView, @DrawableRes placeHolderId: Int) {
         if (TextUtils.isEmpty(imagePath)) {
             imageView.setImageResource(placeHolderId)

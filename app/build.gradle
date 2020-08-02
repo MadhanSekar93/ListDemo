@@ -25,6 +25,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        dev{
+            applicationId "com.madhan.listdemo.testing"
+            buildConfigField 'String', 'BASE_URL', '"https://dl.dropboxusercontent.com/"'
+
+        }
+
+        prod{
+            applicationId "com.madhan.listdemo"
+            buildConfigField 'String', 'BASE_URL', '"https://dl.dropboxusercontent.com/"'
+
+        }
+    }
 }
 
 dependencies {

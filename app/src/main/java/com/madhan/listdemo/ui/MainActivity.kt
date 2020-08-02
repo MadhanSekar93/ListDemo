@@ -21,11 +21,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        // list layoutmanager code
         val gridLayoutManager = LinearLayoutManager(this)
         activityMainBinding!!.rvListView.setHasFixedSize(true);
         activityMainBinding!!.rvListView.setLayoutManager(gridLayoutManager);
-        mAdapter = ListAdapter(ArrayList(), this@MainActivity,true)
+        // empty data to set loader
+        mAdapter = ListAdapter(ArrayList(), this@MainActivity, true)
         activityMainBinding!!.rvListView.setAdapter(mAdapter)
+
+        // MVVM Viewmodel initialization code
         val model: LisViewModel = ViewModelProvider(this).get(LisViewModel::class.java)
 
         model.program
@@ -33,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
 
                 override fun onChanged(t: AboutCanada?) {
-
+                    // MVVM list set code
                     val countriesModels = t!!.rows
-                    mAdapter = ListAdapter(countriesModels!!, this@MainActivity,false)
+                    mAdapter = ListAdapter(countriesModels!!, this@MainActivity, false)
                     activityMainBinding!!.rvListView.setAdapter(mAdapter)
                 }
             })

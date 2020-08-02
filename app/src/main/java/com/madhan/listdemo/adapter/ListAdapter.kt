@@ -45,6 +45,7 @@ class ListAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
+        // loader and data view tye
         return if (this.shimmer!!) {
             PROGRESS_VIEW
         } else {
@@ -55,12 +56,13 @@ class ListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val context = mContextWeakReference.get() ?: return
-
+        // loader holder tye
         if (PROGRESS_VIEW == getItemViewType(position)) {
             val sectionHeaderViewHolder = holder as ShimmerHolder
             sectionHeaderViewHolder.itemNameBinding.shimmerViewContainer.startShimmer()
             return
         }
+        // data holder tye
         val itemViewHolder = holder as ItemViewHolder
         itemViewHolder.itemNameBinding.tvName.text = listModel[position].title
         itemViewHolder.itemNameBinding.tvDescription.text = listModel[position].description
@@ -82,9 +84,10 @@ class ListAdapter(
         }else
         return listModel.size
     }
-
+// View data class
     class ItemViewHolder(var itemNameBinding: ItemNameBinding) :
         ViewHolder(itemNameBinding.root)
+ //loader class
   class ShimmerHolder(var itemNameBinding: ShimmerLayoutBinding) :
         ViewHolder(itemNameBinding.root)
 

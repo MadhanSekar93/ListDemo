@@ -12,8 +12,9 @@ class SplashActivty : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_activty)
         Handler(Looper.getMainLooper()).postDelayed({
-            //Do something after 100ms
+            //Activity Intent after 3000ms
             startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }, 3000)
     }
 }
