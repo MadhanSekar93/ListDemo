@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ListDemo</string>
+    <string name="no_network">Check Network Connection</string>
 </resources>

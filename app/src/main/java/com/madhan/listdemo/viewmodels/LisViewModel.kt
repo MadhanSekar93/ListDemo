@@ -56,6 +56,7 @@ class LisViewModel : ViewModel() {
                 call: Call<AboutCanada?>,
                 t: Throwable
             ) {
+                heroList!!.value =null
                 Log.d("guardians", t.message!!)
             }
         })

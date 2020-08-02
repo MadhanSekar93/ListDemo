@@ -37,8 +37,18 @@ class MainActivity : AppCompatActivity() {
 
 
                 override fun onChanged(t: AboutCanada?) {
+
+                    if(t==null)
+                    {
+                        activityMainBinding!!.rvListView.visibility =View.GONE
+                        activityMainBinding!!.tvNoNetwork.visibility =View.VISIBLE
+                        activityMainBinding!!.tvNoNetwork.text =getString(R.string.no_network)
+                       return
+                    }
                     // MVVM list set code
                     val countriesModels = t!!.rows
+                    val actionBar = supportActionBar
+                    actionBar!!.title=t.title
                     mAdapter = ListAdapter(countriesModels!!, this@MainActivity, false)
                     activityMainBinding!!.rvListView.setAdapter(mAdapter)
                 }
