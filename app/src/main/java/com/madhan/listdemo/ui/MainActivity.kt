@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         val gridLayoutManager = LinearLayoutManager(this)
         activityMainBinding!!.rvListView.setHasFixedSize(true);
         activityMainBinding!!.rvListView.setLayoutManager(gridLayoutManager);
+        mAdapter = ListAdapter(ArrayList(), this@MainActivity,true)
+        activityMainBinding!!.rvListView.setAdapter(mAdapter)
         val model: LisViewModel = ViewModelProvider(this).get(LisViewModel::class.java)
 
         model.program
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onChanged(t: AboutCanada?) {
 
                     val countriesModels = t!!.rows
-                    mAdapter = ListAdapter(countriesModels!!, this@MainActivity)
+                    mAdapter = ListAdapter(countriesModels!!, this@MainActivity,false)
                     activityMainBinding!!.rvListView.setAdapter(mAdapter)
                 }
             })
