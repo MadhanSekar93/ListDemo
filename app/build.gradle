@@ -10,13 +10,12 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.madhan.listdemo"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -29,16 +28,19 @@ android {
     productFlavors {
         dev{
             applicationId "com.madhan.listdemo.testing"
+            testApplicationId "com.madhan.listdemo.test"
             buildConfigField 'String', 'BASE_URL', '"https://dl.dropboxusercontent.com/"'
 
         }
 
         prod{
             applicationId "com.madhan.listdemo"
+            testApplicationId "com.madhan.listdemo.test"
             buildConfigField 'String', 'BASE_URL', '"https://dl.dropboxusercontent.com/"'
 
         }
     }
+
 }
 
 dependencies {
@@ -50,8 +52,20 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    // Core library
+    testImplementation 'androidx.test:core:1.2.0'
+    testImplementation 'androidx.test:runner:1.2.0'
+    testImplementation 'androidx.test:rules:1.2.0'
+    testImplementation "org.robolectric:robolectric:4.2.1"
+
+
+    testImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+    // Set this dependency if you want to use the Hamcrest matcher library
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
